@@ -32,6 +32,7 @@ resource "google_container_node_pool" "primary_nodes" {
   node_config {
     machine_type = var.machine_type
     oauth_scopes = [
+      "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring"
     ]
@@ -52,6 +53,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     preemptible  = true
     machine_type = var.machine_type
     oauth_scopes = [
+      "https://www.googleapis.com/auth/devstorage.read_only",
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
