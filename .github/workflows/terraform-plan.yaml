@@ -7,7 +7,7 @@ on:
 env:
   TERRAFORM_VERSION: 0.12.21
   TF_VAR_project: ${{secrets.PROJECT}}
-  GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+  GOOGLE_CREDENTIALS: ${{secrets.GOOGLE_CREDENTIALS}}
   
 jobs:
   terraform:
