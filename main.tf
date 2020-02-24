@@ -1,5 +1,5 @@
 terraform {
-  required_version = "0.12.13"
+  required_version = "0.12.21"
 }
 
 resource "google_container_cluster" "primary" {
