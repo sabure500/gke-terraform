@@ -1,4 +1,4 @@
-name: 'Terraform Test'
+name: 'terraform-test'
 on:
   push:
     branches-ignore:
@@ -11,7 +11,7 @@ env:
   
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'terraform-test'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
