@@ -9,10 +9,19 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
 |プリエンティブノード数|2|
 |ゾーン|us-west1-1|
 
-# 参考ドキュメント
-* [Terraform公式](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
+## クラスタ費用について
+* GKEにおいてmasterNodeは元から無料
+* WorkerNodeにおける1Nodeは無料枠の「f1-micro」で作成
+* WorkerNodeの残り2Nodeは安価なpreemptibleで作成
+  - ただし、preemptibleなインスタンスは安価な代わりに様々な制約がある。
+  - 詳細は参考に示す公式ドキュメントを確認すること
 
-# 以降は自分用のメモ書き
+# 参考
+* [Terraform公式](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
+* [プリエンプティブル VM インスタンス](https://cloud.google.com/compute/docs/instances/preemptible?hl=ja)
+
+
+# メモ書き
 
 * このクラスターでクライアント証明書が有効かどうか
 ```
@@ -29,10 +38,14 @@ management.auto_repair = true
 metadata.disable-legacy-endpoints = "true"
 ```
 
-* 作成するNODEインスタンスをプリランプティブなものにするか
+* 作成するNODEインスタンスをプリランプティブなものにするか  
 ```
 node_config.preemptible = true
 ```
+※preemptibleインスタンスを使った場合は価格がかなり安くなるが以下のような特性を持つ
+* 勝手にシャットダウンされる
+* 最大4時間しか起動しつづけられない
+* 要求したタイミングでインスタンスを立ち上げることができない可能性もある
 
 * kubernetesマスターAPIにアクセスするためのbasic認証情報(両方を空にすることで明示的に無効にできる)
 ```
