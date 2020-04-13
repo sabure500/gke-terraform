@@ -1,0 +1,42 @@
+name: 'Terraform Apply'
+on:
+  pull_request:
+    branches:
+      - master
+
+env:
+  TERRAFORM_VERSION: 0.12.21
+  TF_VAR_project: ${{secrets.PROJECT}}
+  GOOGLE_CREDENTIALS: ${{secrets.GOOGLE_CREDENTIALS}}
+  
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v1
+        
+      - name: 'Terraform Format'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.12.21
+          tf_actions_subcommand: 'fmt'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 'Terraform Init'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.12.21
+          tf_actions_subcommand: 'init'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 'Terraform Validate'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.12.21
+          tf_actions_subcommand: 'apply'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
