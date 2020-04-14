@@ -3,6 +3,7 @@ terraform {
 }
 
 resource "google_container_cluster" "primary" {
+  project  = var.project
   name     = var.cluster_name
   location = var.location
 

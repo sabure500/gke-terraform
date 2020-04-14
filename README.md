@@ -23,23 +23,29 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
 
 # メモ書き
 
-* このクラスターでクライアント証明書が有効かどうか
+* デフォルトのNodeを削除するかどうか(trueの場合はinitial_node_countを1にする)
+```h
+remove_default_node_pool = true
+initial_node_count       = 1
 ```
+
+* このクラスターでクライアント証明書が有効かどうか
+```h
 remove_default_node_pool = true
 ```
 
 * ノードを自動的に修復するか
-```
+```h
 management.auto_repair = true
 ```
 
 * 以前のメタデータAPIを無効にして新しいノードプールを作成する
-```
+```h
 metadata.disable-legacy-endpoints = "true"
 ```
 
 * 作成するNODEインスタンスをプリランプティブなものにするか  
-```
+```h
 node_config.preemptible = true
 ```
 ※preemptibleインスタンスを使った場合は価格がかなり安くなるが以下のような特性を持つ
