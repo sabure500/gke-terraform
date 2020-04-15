@@ -17,9 +17,9 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
   - 詳細は参考に示す公式ドキュメントを確認すること
 
 # 参考
-* [Terraform公式](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
+* [google_container_cluster](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
+* [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google/)
 * [プリエンプティブル VM インスタンス](https://cloud.google.com/compute/docs/instances/preemptible?hl=ja)
-
 
 # メモ書き
 
