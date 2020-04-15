@@ -1,4 +1,4 @@
-name: 'terraform-apply'
+name: 'terraform-destroy'
 on:
   repository_dispatch:
     types: [destroy]
