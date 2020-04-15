@@ -21,6 +21,7 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
 * [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google/)
 * [プリエンプティブル VM インスタンス](https://cloud.google.com/compute/docs/instances/preemptible?hl=ja)
 * [利用可能な GKE クラスタ バージョン](https://cloud.google.com/run/docs/gke/cluster-versions)
+* [VM インスタンスの料金](https://cloud.google.com/compute/vm-instance-pricing)
 
 # メモ書き
 

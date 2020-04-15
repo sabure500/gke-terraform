@@ -12,6 +12,10 @@ variable "machine_type" {
   default = "f1-micro"
 }
 
+variable "preemptible_machine_type" {
+  default = "e2-small"
+}
+
 variable "network" {
   default = "default"
 }
