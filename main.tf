@@ -14,6 +14,9 @@ resource "google_container_cluster" "primary" {
   min_master_version = var.min_master_version
   node_version       = var.node_version
 
+  monitoring_service = "none"
+  logging_service    = "none"
+
   master_auth {
     username = ""
     password = ""
