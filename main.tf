@@ -2,22 +2,22 @@ terraform {
   required_version = "0.12.21"
 }
 
-# resource "google_container_cluster" "primary" {
-#   name     = var.cluster_name
-#   location = var.location
+resource "google_container_cluster" "primary" {
+  name     = var.cluster_name
+  location = var.location
 
-#   remove_default_node_pool = true
-#   initial_node_count       = 1
+  # remove_default_node_pool = true
+  # initial_node_count       = 1
 
-#   master_auth {
-#     username = ""
-#     password = ""
+  # master_auth {
+  #   username = ""
+  #   password = ""
 
-#     client_certificate_config {
-#       issue_client_certificate = false
-#     }
-#   }
-# }
+  #   client_certificate_config {
+  #     issue_client_certificate = false
+  #   }
+  # }
+}
 
 resource "google_container_node_pool" "primary_nodes" {
   name       = "${var.cluster_name}-node-pool"
