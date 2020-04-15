@@ -15,3 +15,11 @@ variable "machine_type" {
 variable "network" {
   default = "default"
 }
+
+variable "min_master_version" {
+  default = "1.15.11-gke.3"
+}
+
+variable "node_version" {
+  default = "1.15.11-gke.3"
+}

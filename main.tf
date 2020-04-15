@@ -11,6 +11,9 @@ resource "google_container_cluster" "primary" {
 
   network = var.network
 
+  min_master_version = var.min_master_version
+  node_version       = var.node_version
+
   master_auth {
     username = ""
     password = ""
