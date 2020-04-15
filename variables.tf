@@ -1,7 +1,7 @@
 variable "project" {}
 
 variable "cluster_name" {
-  default = "gke-cluster"
+  default = "my-gke-cluster"
 }
 
 variable "location" {
@@ -10,4 +10,8 @@ variable "location" {
 
 variable "machine_type" {
   default = "f1-micro"
+}
+
+variable "network" {
+  default = "default"
 }
