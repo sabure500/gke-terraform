@@ -3,7 +3,7 @@ terraform {
 }
 
 resource "google_container_cluster" "primary" {
-  name     = var.cluster_name
+  name     = "gke-cluster"
   location = var.location
 
   remove_default_node_pool = true
