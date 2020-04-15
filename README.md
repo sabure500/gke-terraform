@@ -16,12 +16,23 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
   - ただし、preemptibleなインスタンスは安価な代わりに様々な制約がある。
   - 詳細は参考に示す公式ドキュメントを確認すること
 
+# JOBの手動実行
+以下のコマンドでpushを行わずにmasterブランチの状態でapply or destroyを行うことができる
+```bash
+curl -vv \
+  -H "Authorization: token $PERSONAL_ACCESS_TOKEN" \
+  -H "Accept: application/vnd.github.everest-preview+json" \
+  "https://api.github.com/repos/sabure500/gke-terraform/dispatches" \
+  -d '{"event_type": "apply or destroy", "client_payload": {"target_brunch": "master"}}'
+```
+
 # 参考
 * [google_container_cluster](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
 * [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google/)
 * [プリエンプティブル VM インスタンス](https://cloud.google.com/compute/docs/instances/preemptible?hl=ja)
 * [利用可能な GKE クラスタ バージョン](https://cloud.google.com/run/docs/gke/cluster-versions)
 * [VM インスタンスの料金](https://cloud.google.com/compute/vm-instance-pricing)
+* [Create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)
 
 # メモ書き
 
@@ -56,12 +67,17 @@ node_config.preemptible = true
 * 要求したタイミングでインスタンスを立ち上げることができない可能性もある
 
 * kubernetesマスターAPIにアクセスするためのbasic認証情報(両方を空にすることで明示的に無効にできる)
-```
+```h
   master_auth {
     username = ""
     password = ""
 ```
 
+* GKE上で稼働するデフォルトのPodを最小限にする
+```h
+  monitoring_service = "none"
+  logging_service    = "none"
+```
 
 ## node_config.oauth_scopes 
 - https://www.googleapis.com/auth/logging.write  
