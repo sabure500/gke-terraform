@@ -1,6 +1,4 @@
-variable "project" {
-  default = "vast-dock-259309"
-}
+variable "project" {}
 
 variable "cluster_name" {
   default = "my-gke-cluster"
