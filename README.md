@@ -4,10 +4,9 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
 # GKEクラスタ構成
 |||
 |-|-|
-|マシンタイプ|f1-micro|
 |ノード数|1|
 |プリエンティブノード数|2|
-|ゾーン|us-west1-1|
+|ゾーン|us-west1-a|
 
 ## クラスタ費用について
 * GKEにおいてmasterNodeは元から無料
