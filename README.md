@@ -5,7 +5,7 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
 |||
 |-|-|
 |ノード数|0|
-|プリエンティブノード数|2|
+|プリエンティブノード数|1|
 |ゾーン|us-west1-a|
 
 ## クラスタ費用について
@@ -14,7 +14,7 @@ GithubActionsでTerraformを利用して、GKEクラスタを作成するリポ�
   - f1-microサイズでは割り当てメモリが足りずサポートできない旨のエラーメッセージが出るようになった(2020/4)
   - preemptibleノードのみで稼働可能なため、無料枠のf1-microのNODEはコメントアウトする
   - エラーメッセージ : ```error creating NodePool: googleapi: Error 400: Node pools of f1-micro machines are not supported due to insufficient memory., badRequest```
-* WorkerNodeの残り2Nodeは安価なpreemptibleで作成
+* WorkerNodeの残りNodeは安価なpreemptibleで作成
   - ただし、preemptibleなインスタンスは安価な代わりに様々な制約がある。
   - 詳細は参考に示す公式ドキュメントを確認すること
 
