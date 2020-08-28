@@ -21,9 +21,9 @@ variable "network" {
 }
 
 variable "min_master_version" {
-  default = "1.17.9-gke.600"
+  default = "1.17.9-gke.1503"
 }
 
 variable "node_version" {
-  default = "1.17.9-gke.600"
+  default = "1.17.9-gke.1503"
 }
