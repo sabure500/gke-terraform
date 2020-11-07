@@ -38,7 +38,7 @@ curl -vv \
 - [google_container_cluster](https://www.terraform.io/docs/providers/google/r/container_cluster.html)
 - [terraform-provider-google](https://github.com/terraform-providers/terraform-provider-google/)
 - [プリエンプティブル VM インスタンス](https://cloud.google.com/compute/docs/instances/preemptible?hl=ja)
-- [利用可能な GKE クラスタ バージョン](https://cloud.google.com/run/docs/gke/cluster-versions)
+- [利用可能な GKE クラスタ バージョン](https://cloud.google.com/kubernetes-engine/docs/release-notes)
 - [VM インスタンスの料金](https://cloud.google.com/compute/vm-instance-pricing)
 - [Create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)
 - [Terraform 用の Github Action](https://github.com/hashicorp/setup-terraform)
