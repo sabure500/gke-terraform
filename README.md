@@ -41,6 +41,7 @@ curl -vv \
 - [利用可能な GKE クラスタ バージョン](https://cloud.google.com/run/docs/gke/cluster-versions)
 - [VM インスタンスの料金](https://cloud.google.com/compute/vm-instance-pricing)
 - [Create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)
+- [Terraform 用の Github Action](https://github.com/hashicorp/setup-terraform)
 
 ## メモ書き
 

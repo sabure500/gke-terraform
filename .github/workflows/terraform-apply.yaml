@@ -1,44 +1,44 @@
-name: 'terraform-apply'
+name: terraform test&apply
 on:
   push:
-    branches:
-      - master
   repository_dispatch:
     types: [apply]
 
 env:
-  TERRAFORM_VERSION: 0.12.24
   TF_VAR_project: ${{secrets.PROJECT}}
   GOOGLE_CREDENTIALS: ${{secrets.GOOGLE_CREDENTIALS}}
-  
+
 jobs:
   terraform:
-    name: 'terraform-apply'
+    name: terraform test&apply
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: 'Terraform Init'
-        uses: hashicorp/terraform-github-actions@master
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v1
         with:
-          tf_actions_version: 0.12.24
-          tf_actions_subcommand: 'init'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          terraform_version: 0.13.5
 
-      - name: 'Terraform Plan'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: 0.12.24
-          tf_actions_subcommand: 'plan'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
 
-      - name: 'Terraform Apply'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: 0.12.24
-          tf_actions_subcommand: 'apply'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+
+      - name: Terraform apply
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        run: terraform apply -auto-approve
