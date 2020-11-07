@@ -30,7 +30,7 @@ curl -vv \
   -H "Authorization: token $PERSONAL_ACCESS_TOKEN" \
   -H "Accept: application/vnd.github.everest-preview+json" \
   "https://api.github.com/repos/sabure500/gke-terraform/dispatches" \
-  -d '{"event_type": "apply or destroy", "client_payload": {"target_brunch": "master"}}'
+  -d '{"event_type": "apply or destroy", "client_payload": {"ref": "master"}}'
 ```
 
 ## 参考
