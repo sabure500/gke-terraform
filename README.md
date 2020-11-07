@@ -30,7 +30,7 @@ curl -vv \
   -H "Authorization: token $PERSONAL_ACCESS_TOKEN" \
   -H "Accept: application/vnd.github.everest-preview+json" \
   "https://api.github.com/repos/sabure500/gke-terraform/dispatches" \
-  -d '{"event_type": "apply or destroy", "client_payload": {"target_brunch": "master"}}'
+  -d '{"event_type": "apply or destroy", "client_payload": {"ref": "master"}}'
 ```
 
 ## 参考
@@ -41,6 +41,7 @@ curl -vv \
 - [利用可能な GKE クラスタ バージョン](https://cloud.google.com/run/docs/gke/cluster-versions)
 - [VM インスタンスの料金](https://cloud.google.com/compute/vm-instance-pricing)
 - [Create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)
+- [Terraform 用の Github Action](https://github.com/hashicorp/setup-terraform)
 
 ## メモ書き
 

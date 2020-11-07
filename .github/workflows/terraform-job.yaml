@@ -1,0 +1,44 @@
+name: terraform test&apply
+on:
+  push:
+  repository_dispatch:
+    types: [apply]
+
+env:
+  TF_VAR_project: ${{secrets.PROJECT}}
+  GOOGLE_CREDENTIALS: ${{secrets.GOOGLE_CREDENTIALS}}
+
+jobs:
+  terraform:
+    name: terraform test&apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.13.5
+
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+
+      - name: Terraform apply
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        run: terraform apply -auto-approve
