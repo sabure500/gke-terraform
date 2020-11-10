@@ -31,7 +31,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "${var.cluster_name}-preemptible-node-pool"
   location   = var.location
   cluster    = google_container_cluster.primary.name
-  node_count = 1
+  node_count = 2
 
   management {
     auto_repair = true
