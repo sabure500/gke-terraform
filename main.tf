@@ -11,11 +11,11 @@ resource "google_container_cluster" "primary" {
   monitoring_service = "none"
   logging_service    = "none"
 
-  addons_config {
-    istio_config {
-      disabled = false
-    }
-  }
+  # addons_config {
+  #   istio_config {
+  #     disabled = false
+  #   }
+  # }
 
   master_auth {
     username = ""
