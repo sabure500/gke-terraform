@@ -1,5 +1,4 @@
 resource "google_container_cluster" "primary" {
-  provider   = google-beta
   name     = var.cluster_name
   location = var.location
 
